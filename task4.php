@@ -6,28 +6,24 @@
         protected $age;
 
         public function setName($name)
-
         {
 
             $this->name = $name;
 
         }
         public function getName()
-
         {
 
             return $this->name;
 
         }
         public function setAge($age)
-
         {
 
             $this->age = $age;
 
         }
         public function getAge()
-
         {
 
             return $this->age;
@@ -40,14 +36,12 @@
 
         private $salary;
         public function getSalary()
-
         {
 
             return $this->salary;
 
         }
         public function setSalary($salary)
-
         {
 
             $this->salary = $salary;
@@ -62,7 +56,6 @@
         private $stipend;
         private $class;
         public function getStipend()
-
         {
 
             return $this->stipend;
@@ -70,7 +63,6 @@
         }
 
         public function setStipend($stipend)
-
         {
 
             $this->stipend = $stipend;
@@ -78,7 +70,6 @@
         }
 
         public function getClass()
-
         {
 
             return $this->class;
@@ -86,7 +77,6 @@
         }
 
         public function setClass($class)
-
         {
 
             $this->class = $class;
@@ -102,10 +92,11 @@
         private $drivecat;
 
         public function __construct($drivexp,$drivecat)
-
         {
+
             $this->drivexp = $drivexp;
             $this->drivecat = $drivecat;
+
         }
 
         

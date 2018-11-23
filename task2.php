@@ -7,7 +7,6 @@ class Worker
     private $age;
     private $salary;
     public function setName($name)
-
     {
 
         $this->name = $name;
@@ -15,7 +14,6 @@ class Worker
     }
 
     public function getNAme()
-
     {
         
         return $this->name;
@@ -23,7 +21,6 @@ class Worker
     }
 
     public function setAge($age)
-
     {
 
         $this->age = $age;
@@ -31,7 +28,6 @@ class Worker
     }
 
     public function getAge()
-
     {
 
         return $this->age;
@@ -39,15 +35,12 @@ class Worker
     }
 
     public function setSalary($salary)
-
     {
 
        $this->salary = $salary;
 
     }
-
     public function getSalary()
-
     {
 
         return $this->salary;

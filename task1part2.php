@@ -7,7 +7,6 @@
      public $age;
      public $salary;
      private function checkAge($age)
-
         {
 
             echo ($this->age<=100 && $this->age>=1) ?  
@@ -16,7 +15,6 @@
         }
 
      public function setAge($age)
-
     {
 
         $this->age = $age;
