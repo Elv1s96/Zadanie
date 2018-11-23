@@ -78,7 +78,7 @@
 
         {
 
-            setcookie("SessionId", session_id(),time()+7200);
+            setcookie("NewNameOFCookie", "Cookie content",time()+600);
 
         }
 
@@ -114,6 +114,7 @@
         }
 
         public function set()
+
         {
             
         }
@@ -196,7 +197,7 @@
         } 
         public function clearLogTable()
         {
-            
+
         }
     }
     
@@ -224,4 +225,25 @@ $Cookie->set();
 $Cookie->get();
 //$Ses->del();
 //$Ses->del();
+?>
+<form action="task5.php" method="POST">
+        <div class="form-group">
+            <label for="login">Ввести текст:</label>
+            <input type="text" class="form-control" name="sometext" id="sometext">
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+</form>
+<?php
+if(!empty($_POST['sometext']))
+{
+    $_COOKIE["inputcontent"] = $_POST['sometext'];
+    var_dump($_POST['sometext']);
+    echo "<br>";
+    echo "------------------------" . "<br>";
+    var_dump($_COOKIE["inputcontent"]);
+    echo "<br>";
+    echo "------------------------" . "<br>";
+    var_dump($_COOKIE);
+}
+
 ?>
