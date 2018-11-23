@@ -135,9 +135,72 @@
 
     {
 
+        public function setMessage()
 
+        {
+
+
+
+        }
+        
+        public function getMessage()
+
+        {
+
+
+
+        }
 
     }
+
+    class Db
+
+    {
+
+        public static function getData()
+
+        {
+
+        }
+        public function delData()
+        {
+
+        }
+        public function rewriteData()
+        {
+
+        }
+        public static function calcData()
+        {
+
+        }
+        public function clearTable()
+        {
+
+        }
+        public function clearTables()
+        {
+
+        }
+
+    }
+    class Log
+    {
+        public function saveInLog()
+        {
+
+        }
+        public static function getLastN()
+        {
+
+        } 
+        public function clearLogTable()
+        {
+            
+        }
+    }
+    
+
 
 $test = new Form;
 $test->input(['type'=>'text', 'value'=>'3234', 'class'=>'ggg']);
@@ -149,12 +212,12 @@ $test->close();
 
 
 
-$form = new Form;
-$form->open(['action'=>'index.php', 'method'=>'POST']);
-$form->input(['type'=>'text', 'placeholder'=>'Ваше имя', 'name'=>'name']);
-$form->password(['placeholder'=>'Ваш пароль', 'name'=>'pass']);
-$form->submit(['value'=>'Отправить']);
-$form->close();
+//$form = new Form;
+//$form->open(['action'=>'index.php', 'method'=>'POST']);
+//$form->input(['type'=>'text', 'placeholder'=>'Ваше имя', 'name'=>'name']);
+//$form->password(['placeholder'=>'Ваш пароль', 'name'=>'pass']);
+//$form->submit(['value'=>'Отправить']);
+//$form->close();
 $Ses = new Session;
 $Cookie = new Cookie;
 $Cookie->set();
