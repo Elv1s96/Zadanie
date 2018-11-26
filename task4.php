@@ -1,7 +1,5 @@
 <?php
-
-    require_once("task3.php");
-
+    require("task3.php");
 
     class User
     {
@@ -69,7 +67,7 @@
     }
     //Почему не видит класс task3\Worker?
     
-    class Driver extends Worker
+    class Driver extends task3\Worker
     {
         private $drivexp;
         private $drivecat;
@@ -78,6 +76,14 @@
         {
             $this->drivexp = $drivexp;
             $this->drivecat = $drivecat;
+        }
+        public function getDrivexp()
+        {
+            return $this->drivexp;
+        }
+        public function getDrivecat()
+        {
+            return $this->drivecat;
         }       
     }
 $Ivan = new Worker;
@@ -89,8 +95,7 @@ $Vasya = new Worker;
 $Vasya->setName("Vasya");
 $Vasya->setAge(26);
 $Vasya->setSalary(2000);
-
 $SummSalary = $Ivan->getSalary() + $Vasya->getSalary();
-echo "Сумма Зарплат Ивана и Васи: " . "$SummSalary"; 
+//echo "Сумма Зарплат Ивана и Васи: " . "$SummSalary"; 
 
 ?>

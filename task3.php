@@ -36,6 +36,7 @@ namespace task3;
         {
             return $this->salary;
         }
+        
     }
     $Dima = new Worker("Dima",1000);
     $Dima->age = 5;
