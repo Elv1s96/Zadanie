@@ -4,104 +4,99 @@
     {
 
        public function input($value)
-
        {
-
-            //echo $cho=http_build_query($value,'',',');
             $a =  str_replace('=', '= "', http_build_query($value, null, '" ')) . '"';
-            echo "&lt;" . "input  " . "$a" . "&gt;";
+            echo "<" . "input  " . "$a" . ">";
             echo "<br>";
-
        }
 
        public function submit($value)
-
        {
-
-        $a =  str_replace('=', '= "', http_build_query($value, null, '" ')) . '"';
-        echo "&lt;" . "input  " . "type = &quot;submit&quot; "."$a". "&gt;";
-        echo "<br>";
-
+         $value = implode(",", $value);
+         echo "<" . "button  "  . "type = &quot;submit&quot; ".">" ."$value". "</button>";
+         echo "<br>";
        }
 
        public function password($value)
-
        {
-
         $a =  str_replace('=', '= "', http_build_query($value, null, '" ')) . '"';
-        echo "&lt;" . "input  " . "type = &quot;password&quot; "."$a". "&gt;";
+        echo "<" . "input  " . "type = &quot;password&quot; "."$a". ">";
         echo "<br>";
-
        }
 
        public function textarea($value)
-
        {
-
         $a =  str_replace('=', '= "', http_build_query($value, null, '" ')) . '"';
-        echo "&lt;" . "textarea  " . "$a". "&lt;/textarea&gt;";
+        echo "<" . "textarea  " . "$a". ">". "</textarea>";
         echo "<br>";
-
        }
 
        public function open($value)
-
        {
-
         $a =  str_replace('=', '= "', http_build_query($value, null, '" ')) . '"';
-        echo "&lt;" . "form  " ."$a". "&gt;";
+        echo "<" . "form  " ."$a". ">";
         echo "<br>";
-
        }
 
        public function close()
-
        {
-
-           echo "&lt;" ."/form" ."&gt;";
+           echo "<" ."/form" .">";
            echo "<br>";
-
        }
     }
     Class SmartForm extends Form
-
     {
-
-        
-
+        public $name;
+        public $pass;
+        public $textarea;
+        public function Save()
+        {
+            /*
+            if(!empty($_POST['name'] && $_POST['pass'] && $_POST['textarea']))
+            {
+                $this->name = $_POST['name'];
+                $this->pass = $_POST['pass'];
+                $this->textarea = $_POST['textarea'];
+                var_dump($_POST);
+            }
+            */
+            if(!empty($_POST['name'])){
+                $this->name = $_POST['name'];
+                echo "name:" . $_POST['name'] ."<br>";
+            }
+            if(!empty($_POST['pass'])){
+                $this->pass = $_POST['pass'];
+                echo "pass:" . $_POST['pass'] ."<br>";
+            }
+            if(!empty($_POST['textarea'])){
+                $this->textarea = $_POST['textarea'];
+                echo "textarea:" . $_POST['textarea'] ."<br>";
+            }
+        }
     }
     class Cookie
-
     {
+        protected $name;
 
-        public function set()
-
+        public function set($name)
         {
-
-            setcookie("NewNameOFCookie", "Cookie content",time()+600);
-
+            setcookie("$name", "Cookie content",time()+600);
+            $this->name = $name;
         }
 
         public function get()
-
         {
-
-            var_dump($_COOKIE);
-
+            return $this->name;
         }
 
         public function del()
-
         {
-
-
-
+            unset($_COOKIE['NewNameOFCookie']);
         }
 
     }
 
     class Session
-
     {
         public function __construct()
         {
@@ -109,12 +104,10 @@
             //session_id("QWERTY");
             session_start();
             $a = session_id();
-            echo $a;
-           
+            echo "id Сессии: " . "$a". "<br>";                      
         }
 
         public function set()
-
         {
             
         }
@@ -126,6 +119,7 @@
         {
             session_destroy();
         }
+
         public function checkisset()
         {
 
@@ -135,33 +129,34 @@
     class Flash
 
     {
-
+        public $name;
+        public $pass;
+        public $textarea;
         public function setMessage()
-
         {
-
-
-
+            if(!empty($_POST['name'] && $_POST['pass'] && $_POST['textarea'])){
+            
+                $_SESSION['Complete'] = "Все сохранено";
+                //var_dump($_SESSION);
+            }
         }
         
         public function getMessage()
-
         {
+            if(!empty($_SESSION['Complete'])){
 
+                echo $_SESSION['Complete'];
 
-
+            }
         }
-
     }
 
     class Db
 
     {
-
         public static function getData()
-
         {
-
+            
         }
         public function delData()
         {
@@ -203,6 +198,7 @@
     
 
 
+    /*
 $test = new Form;
 $test->input(['type'=>'text', 'value'=>'3234', 'class'=>'ggg']);
 $test->password(['value'=>'3232']);
@@ -210,29 +206,31 @@ $test->submit(['value'=>'go']);
 $test->textarea(['placeholder'=>'123', 'value'=>'21312']);
 $test->open(['action'=>'index.php', 'method'=>'POST']);
 $test->close();
+*/
 
-
-
-//$form = new Form;
-//$form->open(['action'=>'index.php', 'method'=>'POST']);
-//$form->input(['type'=>'text', 'placeholder'=>'Ваше имя', 'name'=>'name']);
-//$form->password(['placeholder'=>'Ваш пароль', 'name'=>'pass']);
-//$form->submit(['value'=>'Отправить']);
-//$form->close();
+$form = new Form;
+$form->open(['action'=>'task5.php', 'method'=>'POST']);
+$form->input(['type'=>'text', 'placeholder'=>"Your name", 'name'=>'name']);
+$form->password(['placeholder'=>'Your pass', 'name'=>'pass']);
+$form->textarea(['placeholder'=>'123 321', 'value'=>'21312','name'=>'textarea']);
+$form->submit(['value'=>'Send']);
+$form->close();
 $Ses = new Session;
 $Cookie = new Cookie;
-$Cookie->set();
-$Cookie->get();
+$Cookie->set("NewNameOfCookie");
+ echo $Cookie->get();
+echo "<br>";
+$SmartForm = new SmartForm;
+$SmartForm->Save();
+echo "<br>";
+$flash = new Flash;
+$flash->setMessage();
+$flash->getMessage();
+//$Cookie->get();
 //$Ses->del();
 //$Ses->del();
+/*
 ?>
-<form action="task5.php" method="POST">
-        <div class="form-group">
-            <label for="login">Ввести текст:</label>
-            <input type="text" class="form-control" name="sometext" id="sometext">
-        </div>
-        <button type="submit" class="btn btn-success">Login</button>
-</form>
 <?php
 if(!empty($_POST['sometext']))
 {
@@ -247,3 +245,10 @@ if(!empty($_POST['sometext']))
 }
 
 ?>
+*/
+?>
+
+<form action="index.php" method="POST">
+	<input type="text" placeholder="Ваше имя" name="name">
+	<input type="text" placeholder="Ваш пароль" name="pass">
+</form>
