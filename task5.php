@@ -146,7 +146,6 @@
             if(!empty($_SESSION['Complete'])){
 
                 echo $_SESSION['Complete'];
-
             }
         }
     }
@@ -209,7 +208,7 @@ $test->close();
 */
 
 $form = new Form;
-$form->open(['action'=>'task5.php', 'method'=>'POST']);
+$form->open(['action'=>'task5.php', 'method'=>'POST'], ['enctype' =>'multipart/form-data']);
 $form->input(['type'=>'text', 'placeholder'=>"Your name", 'name'=>'name']);
 $form->password(['placeholder'=>'Your pass', 'name'=>'pass']);
 $form->textarea(['placeholder'=>'123 321', 'value'=>'21312','name'=>'textarea']);
@@ -246,9 +245,3 @@ if(!empty($_POST['sometext']))
 
 ?>
 */
-?>
-
-<form action="index.php" method="POST">
-	<input type="text" placeholder="Ваше имя" name="name">
-	<input type="text" placeholder="Ваш пароль" name="pass">
-</form>
