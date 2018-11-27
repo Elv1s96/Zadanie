@@ -134,13 +134,16 @@
         public $textarea;
         public function setMessage()
         {
+            if(isset($_POST['name']) && isset($_POST['pass']) && isset($_POST['textarea'])){
+
+            
             if(!empty($_POST['name'] && $_POST['pass'] && $_POST['textarea'])){
             
                 $_SESSION['Complete'] = "Все сохранено";
                 //var_dump($_SESSION);
             }
         }
-        
+        }
         public function getMessage()
         {
             if(!empty($_SESSION['Complete'])){
@@ -245,3 +248,4 @@ if(!empty($_POST['sometext']))
 
 ?>
 */
+
